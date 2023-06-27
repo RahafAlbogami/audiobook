@@ -1,3 +1,4 @@
+import 'package:audiobook/model/on_boarding_model.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -9,18 +10,27 @@ class OnBoardingScreen extends StatefulWidget {
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   late PageController _pageController;
-  late var onBoardingListItem = [];
   bool isDotActive = false;
   int _pageIndex = 0;
+  List<OnBoard> onBoardingListItem = [
+    OnBoard(
+        title: "Title One",
+        description: 'Lorem ipsum dolor sit amet la maryame dor sut colondeum.',
+        assetPath: "asset/image/Illustration.png"),
+    OnBoard(
+        title: "Title Two",
+        description: 'Lorem ipsum dolor sit amet la maryame dor sut colondeum.',
+        assetPath: "asset/image/Illustration 2.png"),
+    OnBoard(
+        title: "Title Three",
+        description: 'Lorem ipsum dolor sit amet la maryame dor sut colondeum.',
+        assetPath: "asset/image/Illustration 3.png"),
+  ];
 
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
-    onBoardingListItem = [
-      onBoardingItem("asset/image/Illustration.png"),
-      onBoardingItem("asset/image/Illustration 2.png"),
-      onBoardingItem("asset/image/Illustration 3.png"),
-    ];
+    print(onBoardingListItem[0].title);
     super.initState();
   }
 
@@ -82,7 +92,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 onPageChanged: (index) => {
                   setState(() => {_pageIndex = index})
                 },
-                itemBuilder: ((context, index) => onBoardingListItem[index]),
+                itemBuilder: ((context, index) => onBoardingItem(
+                    onBoardingListItem[index],
+                    onBoardingListItem[index].assetPath)),
               ),
             ),
           ),
@@ -96,39 +108,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 100),
-                    width: 12,
-                    height: 12,
-                    decoration: ShapeDecoration(
-                      color: _pageIndex == 0
-                          ? const Color(0xFF4838D1)
-                          : const Color(0xFF2E2E5D),
-                      shape: const OvalBorder(),
-                    ),
-                  ),
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 100),
-                    width: 12,
-                    height: 12,
-                    decoration: ShapeDecoration(
-                      color: _pageIndex == 1
-                          ? const Color(0xFF4838D1)
-                          : const Color(0xFF2E2E5D),
-                      shape: const OvalBorder(),
-                    ),
-                  ),
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 100),
-                    width: 12,
-                    height: 12,
-                    decoration: ShapeDecoration(
-                      color: _pageIndex == 2
-                          ? const Color(0xFF4838D1)
-                          : const Color(0xFF2E2E5D),
-                      shape: const OvalBorder(),
-                    ),
-                  ),
+                  ...List.generate(onBoardingListItem.length,
+                      (index) => dotIndicator(index == _pageIndex)),
                 ],
               ),
             ),
@@ -257,7 +238,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 
-  Widget onBoardingItem(String imageString) {
+  Widget dotIndicator(bool isActive) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 100),
+      width: 12,
+      height: 12,
+      decoration: ShapeDecoration(
+        color: isActive ? const Color(0xFF4838D1) : const Color(0xFF2E2E5D),
+        shape: const OvalBorder(),
+      ),
+    );
+  }
+
+  Widget onBoardingItem(OnBoard onBoardITem, String assetDot) {
     return Column(
       children: [
         Container(
@@ -265,7 +258,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           height: 260,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(imageString),
+              image: AssetImage(assetDot),
               fit: BoxFit.contain,
             ),
           ),
@@ -273,10 +266,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         Container(
           width: 287,
           padding: const EdgeInsets.all(8),
-          child: const Text(
-            'Tittle One',
+          child: Text(
+            onBoardITem.title,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               color: Color(0xFFF5F5FA),
               fontSize: 16,
               fontFamily: 'Poppins',
@@ -287,10 +280,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         Container(
           width: 287,
           padding: const EdgeInsets.all(8),
-          child: const Text(
-            'Lorem ipsum dolor sit amet la maryame dor sut colondeum.',
+          child: Text(
+            onBoardITem.description,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               color: Color(0xFFF5F5FA),
               fontSize: 14,
               fontFamily: 'Poppins',
