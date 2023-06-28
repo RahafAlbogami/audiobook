@@ -1,3 +1,4 @@
+import 'package:audiobook/screens/personalization_complete_screen.dart';
 import 'package:flutter/material.dart';
 
 class PersonalizationScreen extends StatefulWidget {
@@ -199,38 +200,47 @@ class _PersonalizationScreenState extends State<PersonalizationScreen> {
                         )
                       : null,
                 ),
-                Opacity(
-                  opacity: choosenTopic.isNotEmpty? 1: 0.50,
-                  child: Container(
-                    width: 295,
-                    height: 56,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 16),
-                    decoration: ShapeDecoration(
-                      color: const Color(0xFF4838D1),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: const [
-                        Expanded(
-                          child: SizedBox(
-                            child: Text(
-                              'Submit',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w500,
+                GestureDetector(
+                  onTap: () => choosenTopic.isNotEmpty
+                      ? Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const PersonalizationCompleteScreen()),
+                          (Route<dynamic> route) => false)
+                      : null,
+                  child: Opacity(
+                    opacity: choosenTopic.isNotEmpty ? 1 : 0.50,
+                    child: Container(
+                      width: 295,
+                      height: 56,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 32, vertical: 16),
+                      decoration: ShapeDecoration(
+                        color: const Color(0xFF4838D1),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: const [
+                          Expanded(
+                            child: SizedBox(
+                              child: Text(
+                                'Submit',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
