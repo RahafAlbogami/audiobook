@@ -1,6 +1,8 @@
 import 'package:audiobook/screens/personalization_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../utilities/enter_route.dart';
+
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
@@ -95,8 +97,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () => Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(
-                          builder: (context) => const PersonalizationScreen()),
+                      EnterRoute(enterPage: const PersonalizationScreen()),
                       (Route<dynamic> route) => false),
                   child: Container(
                     width: 295,

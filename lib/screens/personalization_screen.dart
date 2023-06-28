@@ -1,6 +1,8 @@
 import 'package:audiobook/screens/personalization_complete_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../utilities/enter_route.dart';
+
 class PersonalizationScreen extends StatefulWidget {
   const PersonalizationScreen({super.key});
 
@@ -203,9 +205,7 @@ class _PersonalizationScreenState extends State<PersonalizationScreen> {
                 GestureDetector(
                   onTap: () => choosenTopic.isNotEmpty
                       ? Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const PersonalizationCompleteScreen()),
+                         EnterRoute(enterPage: const PersonalizationCompleteScreen()),
                           (Route<dynamic> route) => false)
                       : null,
                   child: Opacity(
