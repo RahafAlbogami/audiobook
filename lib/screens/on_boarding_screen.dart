@@ -1,4 +1,5 @@
 import 'package:audiobook/model/on_boarding_model.dart';
+import 'package:audiobook/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -30,7 +31,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
-    print(onBoardingListItem[0].title);
     super.initState();
   }
 
@@ -121,9 +121,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       GestureDetector(
-                        onTap: () => _pageController.previousPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.ease),
+                        onTap: () => Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => const WelcomeScreen()),
+                            (Route<dynamic> route) => false),
                         child: Container(
                           width: 140,
                           height: 56,
@@ -196,9 +197,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     ],
                   )
                 : GestureDetector(
-                    onTap: () => _pageController.nextPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.ease),
+                    onTap: () => Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                            builder: (context) => const WelcomeScreen()),
+                        (Route<dynamic> route) => false),
                     child: Container(
                       width: 295,
                       height: 56,
