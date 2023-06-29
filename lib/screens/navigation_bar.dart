@@ -1,4 +1,5 @@
 import 'package:audiobook/screens/home_screen.dart';
+import 'package:audiobook/screens/library_screen.dart';
 import 'package:audiobook/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
   final List<Widget> _pages = [
     const HomeScreen(),
     const SearchScreen(),
-    const HomeScreen()
+    const LibraryScreen()
   ];
 
   @override

@@ -334,7 +334,7 @@ class _SearchScreenState extends State<SearchScreen> {
               height: MediaQuery.of(context).size.height * 0.05,
             ),
             const Padding(
-              padding: EdgeInsets.only(top: 15.0, bottom: 15),
+              padding: EdgeInsets.only(top: 15.0, bottom: 10),
               child: Text(
                 'Latest Search',
                 style: TextStyle(
