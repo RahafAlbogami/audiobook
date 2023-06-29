@@ -1,4 +1,8 @@
+import 'package:audiobook/screens/home_screen.dart';
+import 'package:audiobook/screens/navigation_bar.dart';
 import 'package:flutter/material.dart';
+
+import '../utilities/enter_route.dart';
 
 class PersonalizationCompleteScreen extends StatelessWidget {
   const PersonalizationCompleteScreen({super.key});
@@ -92,42 +96,46 @@ class PersonalizationCompleteScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15),
-                  child: Container(
-                    width: 295,
-                    height: 56,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 16),
-                    decoration: ShapeDecoration(
-                      color: const Color(0xFF4838D1),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: const [
-                        Expanded(
-                          child: SizedBox(
-                            child: Text(
-                              'Finish',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w500,
+                GestureDetector(
+                  onTap: () => Navigator.of(context).pushAndRemoveUntil(
+                      EnterRoute(enterPage: const NavigationBarScreen()),
+                      (Route<dynamic> route) => false),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    child: Container(
+                      width: 295,
+                      height: 56,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 32, vertical: 16),
+                      decoration: ShapeDecoration(
+                        color: const Color(0xFF4838D1),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: const [
+                          Expanded(
+                            child: SizedBox(
+                              child: Text(
+                                'Finish',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
-
               ],
             ),
           )

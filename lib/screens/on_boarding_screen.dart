@@ -128,7 +128,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           PageRouteBuilder(
                             pageBuilder: (context, animation1, animation2) =>
                                 const WelcomeScreen(),
-                            transitionDuration: Duration(milliseconds: 600),
+                            transitionDuration: const Duration(milliseconds: 600),
                             reverseTransitionDuration: Duration.zero,
                           ),
                         ),
