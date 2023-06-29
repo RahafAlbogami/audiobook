@@ -1,3 +1,4 @@
+import 'package:audiobook/model/book_model.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -8,6 +9,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+
   List<String> listOfTopic = [
     "Art",
     "Business",
@@ -29,6 +32,39 @@ class _HomeScreenState extends State<HomeScreen> {
     "asset/image/Image Placeholder 3.jpg",
     "asset/image/Image Placeholder 1.png",
     "asset/image/Image Placeholder 3.jpg"
+  ];
+
+  List<Book> listOfBooks = [
+    Book(
+      poster: "asset/image/Image Placeholder 1.png",
+      bookCover: "asset/image/book cover 1.png",
+      title: "Title",
+      authoer: "Title",
+    ),
+    Book(
+      poster: "asset/image/Image Placeholder 3.jpg",
+      bookCover: "asset/image/book cover 1.png",
+      title: "Title",
+      authoer: "Title",
+    ),
+    Book(
+      poster: "asset/image/Image Placeholder 1.png",
+      bookCover: "asset/image/book cover 1.png",
+      title: "Title",
+      authoer: "Title",
+    ),
+    Book(
+      poster: "asset/image/Image Placeholder 3.jpg",
+      bookCover: "asset/image/book cover 1.png",
+      title: "Title",
+      authoer: "Title",
+    ),
+    Book(
+      poster: "asset/image/Image Placeholder 1.png",
+      bookCover: "asset/image/book cover 1.png",
+      title: "Title",
+      authoer: "Title",
+    )
   ];
 
   @override
@@ -134,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 20.0, right: 20.0, top: 35.0, bottom: 5),
+                    left: 20.0, right: 20.0, top: 35.0, bottom: 10),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -173,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 20.0, right: 20.0, top: 35.0, bottom: 5),
+                    left: 20.0, right: 20.0, top: 35.0, bottom: 10),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -197,6 +233,59 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontWeight: FontWeight.w500,
                       ),
                     )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.3,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    newRelease(listOfBooks[0].bookCover),
+                    newRelease(listOfBooks[0].bookCover),
+                    newRelease(listOfBooks[0].bookCover),
+                    newRelease(listOfBooks[0].bookCover),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 20.0, right: 20.0, top: 15.0, bottom: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text(
+                      'Trending Now',
+                      style: TextStyle(
+                        color: Color(0xFFF5F5FA),
+                        fontSize: 16,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'See more',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        color: Color(0xFFBBB1FA),
+                        fontSize: 14,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.3,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    newRelease(listOfBooks[0].bookCover),
+                    newRelease(listOfBooks[0].bookCover),
+                    newRelease(listOfBooks[0].bookCover),
+                    newRelease(listOfBooks[0].bookCover),
                   ],
                 ),
               ),
@@ -408,6 +497,52 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget newRelease(String bookCover) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
+      child: Column(
+        children: [
+          SizedBox(
+            width: 160,
+            height: 160,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: 160,
+                  height: 160,
+                  decoration:  BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(bookCover),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.015,
+          ),
+          const SizedBox(
+            width: 160,
+            child: Text(
+              'The Black Witch',
+              style: TextStyle(
+                color: Color(0xFFF5F5FA),
+                fontSize: 16,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
