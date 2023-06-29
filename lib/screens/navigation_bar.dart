@@ -1,4 +1,5 @@
 import 'package:audiobook/screens/home_screen.dart';
+import 'package:audiobook/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
 class NavigationBarScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
 
   final List<Widget> _pages = [
     const HomeScreen(),
-    const HomeScreen(),
+    const SearchScreen(),
     const HomeScreen()
   ];
 
@@ -95,7 +96,7 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
           )
         ],
       ),
-      backgroundColor: const Color(0xFF0E0E29),
+      backgroundColor:const Color(0xFF0E0E29),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

@@ -14,10 +14,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
 
-    return const MaterialApp(
+    return  MaterialApp(
       title: 'Flutter Demo',
+      theme: ThemeData(
+        primaryColor: const Color.fromARGB(255, 14, 14, 41)
+      ),
       
-      home: OnBoardingScreen(),
+      home: const  OnBoardingScreen(),
     );
   }
 }
