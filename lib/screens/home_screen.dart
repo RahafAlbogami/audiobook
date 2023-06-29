@@ -1,5 +1,8 @@
 import 'package:audiobook/model/book_model.dart';
+import 'package:audiobook/screens/book_details_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../utilities/enter_route.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,8 +12,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
   List<String> listOfTopic = [
     "Art",
     "Business",
@@ -25,45 +26,36 @@ class _HomeScreenState extends State<HomeScreen> {
     "Travel"
   ];
 
-  List<String> listOfPoster = [
-    "asset/image/Image Placeholder 1.png",
-    "asset/image/Image Placeholder 3.jpg",
-    "asset/image/Image Placeholder 1.png",
-    "asset/image/Image Placeholder 3.jpg",
-    "asset/image/Image Placeholder 1.png",
-    "asset/image/Image Placeholder 3.jpg"
-  ];
-
   List<Book> listOfBooks = [
     Book(
-      poster: "asset/image/Image Placeholder 1.png",
+      poster: "asset/image/SwordOfDestiny.jpg",
       bookCover: "asset/image/book cover 1.png",
-      title: "Title",
-      authoer: "Title",
+      title: "Sword of Destiny",
+      authoer: "Andrzej Sapkowski",
     ),
     Book(
-      poster: "asset/image/Image Placeholder 3.jpg",
+      poster: "asset/image/theLastWhish.jpg",
       bookCover: "asset/image/book cover 1.png",
-      title: "Title",
-      authoer: "Title",
+      title: "The Last Wish",
+      authoer: "Andrzej Sapkowski",
     ),
     Book(
-      poster: "asset/image/Image Placeholder 1.png",
+      poster: "asset/image/timeOfContempt.jpg",
       bookCover: "asset/image/book cover 1.png",
-      title: "Title",
-      authoer: "Title",
+      title: "The Time of Contempt",
+      authoer: "Andrzej Sapkowski",
     ),
     Book(
-      poster: "asset/image/Image Placeholder 3.jpg",
+      poster: "asset/image/towerOfSwallows.jpg",
       bookCover: "asset/image/book cover 1.png",
-      title: "Title",
-      authoer: "Title",
+      title: "The Tower of Swallows",
+      authoer: "Andrzej Sapkowski",
     ),
     Book(
-      poster: "asset/image/Image Placeholder 1.png",
+      poster: "asset/image/ladyOfTheLake.jpg",
       bookCover: "asset/image/book cover 1.png",
-      title: "Title",
-      authoer: "Title",
+      title: "The Lady of the Lake",
+      authoer: "Andrzej Sapkowski",
     )
   ];
 
@@ -162,8 +154,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      ...List.generate(listOfPoster.length,
-                          (index) => recommendedItem(listOfPoster[index])),
+                      ...List.generate(listOfBooks.length,
+                          (index) => recommendedItem(listOfBooks[index])),
                     ],
                   ),
                 ),
@@ -203,7 +195,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 135,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    children: [bestSellerItem(), bestSellerItem()],
+                    children: [
+                      ...List.generate(listOfBooks.length,
+                          (index) => bestSellerItem(listOfBooks[index])),
+                    ],
                   ),
                 ),
               ),
@@ -328,34 +323,39 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget recommendedItem(String poster) {
+  Widget recommendedItem(Book item) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 0, 6, 0),
-      child: SizedBox(
-        width: 200,
-        height: 300,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: 200,
-              height: 300,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(poster),
-                  fit: BoxFit.fill,
+      child: GestureDetector(
+        onTap: () => Navigator.of(context).push(
+          EnterRoute(enterPage: const BookDetailsScreen()),
+        ),
+        child: SizedBox(
+          width: 200,
+          height: 300,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: 200,
+                height: 300,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(item.poster),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget bestSellerItem() {
+  Widget bestSellerItem(Book item) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(5, 0, 6, 0),
       child: Container(
@@ -386,9 +386,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: 120,
                     height: 120,
                     decoration: ShapeDecoration(
-                      image: const DecorationImage(
+                      image:  DecorationImage(
                         image:
-                            AssetImage("asset/image/Image Placeholder 2.png"),
+                            AssetImage(item.bookCover),
                         fit: BoxFit.fill,
                       ),
                       shape: RoundedRectangleBorder(
@@ -408,12 +408,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children:  [
                     SizedBox(
-                      width: 155,
+                      width: 190,
                       child: Text(
-                        'Light Mage',
-                        style: TextStyle(
+                        item.title,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                           fontFamily: 'Poppins',
@@ -421,12 +421,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     SizedBox(
                       width: 155,
                       child: Text(
-                        'Laurie Forest',
-                        style: TextStyle(
+                        item.authoer,
+                        style: const TextStyle(
                           color: Color(0xFFEBEBF5),
                           fontSize: 12,
                           fontFamily: 'Poppins',
@@ -517,7 +517,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   width: 160,
                   height: 160,
-                  decoration:  BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(bookCover),
                       fit: BoxFit.fill,
