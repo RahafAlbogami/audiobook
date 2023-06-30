@@ -1,6 +1,8 @@
+import 'package:audiobook/screens/audio_player_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../model/book_model.dart';
+import '../utilities/enter_route.dart';
 
 class BookDetailsScreen extends StatefulWidget {
   final Book bookDetail;
@@ -179,53 +181,62 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 170,
-                    height: 53,
-                    padding: const EdgeInsets.all(16),
-                    decoration: ShapeDecoration(
-                      color: const Color(0xFF4838D1),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).push(
+                      EnterRoute(
+                          enterPage: AudioPlayerScreen(
+                        bookDetail: widget.bookDetail,
+                      )),
                     ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                left: 1.67,
-                                top: 1.67,
-                                child: Container(
-                                  width: 16.67,
-                                  height: 16.67,
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage("asset/image/Play.png"),
-                                      fit: BoxFit.fill,
+                    child: Container(
+                      width: 170,
+                      height: 53,
+                      padding: const EdgeInsets.all(16),
+                      decoration: ShapeDecoration(
+                        color: const Color(0xFF4838D1),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  left: 1.67,
+                                  top: 1.67,
+                                  child: Container(
+                                    width: 16.67,
+                                    height: 16.67,
+                                    decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                        image:
+                                            AssetImage("asset/image/Play.png"),
+                                        fit: BoxFit.fill,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        const Text(
-                          'Play Audio',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
+                          const Text(
+                            'Play Audio',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   Container(
@@ -296,7 +307,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
-               SizedBox(
+              SizedBox(
                 width: 303,
                 child: Text(
                   widget.bookDetail.summary,
@@ -308,7 +319,10 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                     fontWeight: FontWeight.w300,
                   ),
                 ),
-              )
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
             ],
           ),
         ),
