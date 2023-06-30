@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
         rate: "4.0",
         tags: ["Fantasy", "Drama", "Fiction"],
         summary: "Geralt is a witcher, a man whose magic powers, enhanced by long training and a mysterious elixir, have made him a brilliant fighter and a merciless assassin. Yet he is no ordinary murderer: his targets are the multifarious monsters and vile fiends that ravage the land and attack the innocent.",
-        audioUrl: "",
+        audioUrl: "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/01.mp3?_=1",
         isRecommended: true),
     Book(
         poster: "asset/image/bloodOfElves.jpg",
@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
         rate: "4.0",
         tags: ["Fantasy", "Drama", "Fiction"],
         summary: "For over a century, humans, dwarves, gnomes, and elves have lived together in relative peace. But times have changed, the uneasy peace is over, and now the races are fighting once again. The only good elf, it seems, is a dead elf.",
-        audioUrl: "",
+        audioUrl: "https://ipaudio6.com/wp-content/uploads/BOOKAUDIO/Blood%20of%20Elves/1.mp3?_=1",
         isRecommended: true),
     Book(
         poster: "asset/image/timeOfContempt.jpg",
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
         rate: "4.0",
         tags: ["Fantasy", "Drama", "Fiction"],
         summary: "Geralt is a witcher: guardian of the innocent; protector of those in need; a defender, in dark times, against some of the most frightening creatures of myth and legend. His task, now, is to protect Ciri. A child of prophecy, she will have the power to change the world for good or for ill -- but only if she lives to use it.",
-        audioUrl: "",
+        audioUrl: "https://files.audiobookss.com/audio/free-full-audiobook-the-time-of-contempt-the-witcher-book-2-by-andrzej-sapkowski/1072566310/Time%20of%20Contempt%20The%20Witcher,%20Book%202%20(Unabridged)%20-%20001-840874795.mp3",
         isRecommended: true),
     Book(
         poster: "asset/image/towerOfSwallows.jpg",
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
         rate: "4.0",
         tags: ["Fantasy", "Drama", "Fiction"],
         summary: "The world has fallen into war. Ciri, the child of prophecy, has vanished. Hunted by friends and foes alike, she has taken on the guise of a petty bandit and lives free for the first time in her life. But the net around her is closing. Geralt, the Witcher, has assembled a group of allies determined to rescue her. Both sides of the war have sent brutal mercenaries to hunt her down. Her crimes have made her famous.",
-        audioUrl: "",
+        audioUrl: "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/01.mp3",
         isRecommended: true),
     Book(
         poster: "asset/image/ladyOfTheLake.jpg",
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
         rate: "4.0",
         tags: ["Fantasy", "Drama", "Fiction"],
         summary: "After walking through the portal in the Tower of Swallows while narrowly escaping death, Ciri finds herself in a completely different world... an Elven world. She is trapped with no way out. Time does not seem to exist and there are no obvious borders or portals to cross back into her home world.",
-        audioUrl: "",
+        audioUrl: "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Lady%20of%20the%20Lake/01.mp3",
         isRecommended: true),
     Book(
         poster: "",

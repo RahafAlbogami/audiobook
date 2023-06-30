@@ -19,6 +19,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFF0E0E29),
       appBar: AppBar(
+        elevation: 0,
         centerTitle: true,
         backgroundColor: const Color(0xFF0E0E29),
         leading: IconButton(
@@ -46,282 +47,286 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
               left: 20.0, right: 20.0, top: 20.0, bottom: 0),
           child: ListView(
             children: [
-              SizedBox(
-                width: 260,
-                height: 260,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 260,
-                      height: 260,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(widget.bookDetail.bookCover),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.025,
-              ),
-              Text(
-                widget.bookDetail.title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.005,
-              ),
-              Text(
-                widget.bookDetail.authoer,
-                style: const TextStyle(
-                  color: Color(0xFFEBEBF5),
-                  fontSize: 17,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
-              ),
-              SizedBox(
-                width: 120,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: 24,
-                      height: 24,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(),
-                      child: Image.asset("asset/image/star-filled.png"),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.020,
-                    ),
-                    Container(
-                      width: 20,
-                      height: 20,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(),
-                      child: Image.asset("asset/image/star-filled.png"),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.020,
-                    ),
-                    Container(
-                      width: 20,
-                      height: 20,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(),
-                      child: Image.asset("asset/image/star-filled.png"),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.020,
-                    ),
-                    Container(
-                      width: 20,
-                      height: 20,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(),
-                      child: Image.asset("asset/image/star-filled.png"),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.020,
-                    ),
-                    Container(
-                      width: 20,
-                      height: 20,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(),
-                      child: Image.asset("asset/image/star-outlined.png"),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.030,
-                    ),
-                    SizedBox(
-                      width: 31,
-                      height: 28,
-                      child: Text(
-                        widget.bookDetail.rate,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Color(0xFFD5D5E3),
-                          fontSize: 20,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.015,
-              ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ...List.generate(widget.bookDetail.tags.toList().length,
-                      (index) => tags(widget.bookDetail.tags[index]))
+                  Container(
+                    width: 300,
+                    height: 300,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(widget.bookDetail.bookCover),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
                 ],
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.035,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).push(
-                      EnterRoute(
-                          enterPage: AudioPlayerScreen(
-                        bookDetail: widget.bookDetail,
-                      )),
+              Container(
+                width: MediaQuery.of(context).size.width * 1,
+                padding: const EdgeInsets.only(
+                    left: 10.0, right: 10.0, top: 20.0, bottom: 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.01,
                     ),
-                    child: Container(
-                      width: 170,
-                      height: 53,
-                      padding: const EdgeInsets.all(16),
-                      decoration: ShapeDecoration(
-                        color: const Color(0xFF4838D1),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
+                    Text(
+                      widget.bookDetail.title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: Stack(
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.005,
+                    ),
+                    Text(
+                      widget.bookDetail.authoer,
+                      style: const TextStyle(
+                        color: Color(0xFFEBEBF5),
+                        fontSize: 17,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.02,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 24,
+                          height: 24,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(),
+                          child: Image.asset("asset/image/star-filled.png"),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.010,
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(),
+                          child: Image.asset("asset/image/star-filled.png"),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.010,
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(),
+                          child: Image.asset("asset/image/star-filled.png"),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.010,
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(),
+                          child: Image.asset("asset/image/star-filled.png"),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.010,
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(),
+                          child: Image.asset("asset/image/star-outlined.png"),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.015,
+                        ),
+                        SizedBox(
+                          width: 31,
+                          height: 28,
+                          child: Text(
+                            widget.bookDetail.rate,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: Color(0xFFD5D5E3),
+                              fontSize: 20,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.015,
+                    ),
+                    Row(
+                      children: [
+                        ...List.generate(widget.bookDetail.tags.toList().length,
+                            (index) => tags(widget.bookDetail.tags[index]))
+                      ],
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.035,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () => Navigator.of(context).push(
+                            EnterRoute(
+                                enterPage: AudioPlayerScreen(
+                              bookDetail: widget.bookDetail,
+                            )),
+                          ),
+                          child: Container(
+                            width: 155,
+                            height: 53,
+                            padding: const EdgeInsets.all(16),
+                            decoration: ShapeDecoration(
+                              color: const Color(0xFF4838D1),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8)),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Positioned(
-                                  left: 1.67,
-                                  top: 1.67,
-                                  child: Container(
-                                    width: 16.67,
-                                    height: 16.67,
-                                    decoration: const BoxDecoration(
-                                      image: DecorationImage(
-                                        image:
-                                            AssetImage("asset/image/Play.png"),
-                                        fit: BoxFit.fill,
+                                SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: Stack(
+                                    children: [
+                                      Positioned(
+                                        left: 1.67,
+                                        top: 1.67,
+                                        child: Container(
+                                          width: 16.67,
+                                          height: 16.67,
+                                          decoration: const BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "asset/image/Play.png"),
+                                              fit: BoxFit.fill,
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                    ],
+                                  ),
+                                ),
+                                const Text(
+                                  'Play Audio',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w500,
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          const Text(
-                            'Play Audio',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
+                        ),
+                        Container(
+                          width: 155,
+                          height: 53,
+                          padding: const EdgeInsets.all(16),
+                          decoration: ShapeDecoration(
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  width: 1, color: Colors.white),
+                              borderRadius: BorderRadius.circular(8),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 170,
-                    height: 53,
-                    padding: const EdgeInsets.all(16),
-                    decoration: ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(width: 1, color: Colors.white),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: Stack(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Positioned(
-                                left: 2.50,
-                                top: 1.67,
-                                child: Container(
-                                  width: 15,
-                                  height: 16.67,
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          "asset/image/Document.png"),
-                                      fit: BoxFit.fill,
+                              SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      left: 2.50,
+                                      top: 1.67,
+                                      child: Container(
+                                        width: 15,
+                                        height: 16.67,
+                                        decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                            image: AssetImage(
+                                                "asset/image/Document.png"),
+                                            fit: BoxFit.fill,
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                  ],
+                                ),
+                              ),
+                              const Text(
+                                'Read Book',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ],
                           ),
-                        ),
-                        const Text(
-                          'Read Book',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+                        )
                       ],
                     ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
-              ),
-              const Text(
-                'Summary',
-                style: TextStyle(
-                  color: Color(0xFFF5F5FA),
-                  fontSize: 14,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600,
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                    ),
+                    const Text(
+                      'Summary',
+                      style: TextStyle(
+                        color: Color(0xFFF5F5FA),
+                        fontSize: 14,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.02,
+                    ),
+                    SizedBox(
+                      width:  MediaQuery.of(context).size.width * 1,
+                      child: Text(
+                        widget.bookDetail.summary,
+                        textAlign: TextAlign.justify,
+                        style: const TextStyle(
+                          color: Color(0xFFD5D5E3),
+                          fontSize: 14,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.02,
+                    ),
+                  ],
                 ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
-              ),
-              SizedBox(
-                width: 303,
-                child: Text(
-                  widget.bookDetail.summary,
-                  textAlign: TextAlign.justify,
-                  style: const TextStyle(
-                    color: Color(0xFFD5D5E3),
-                    fontSize: 14,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
               ),
             ],
           ),

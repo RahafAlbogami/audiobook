@@ -98,7 +98,7 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
           )
         ],
       ),
-      backgroundColor:const Color(0xFF0E0E29),
+      backgroundColor: const Color(0xFF0E0E29),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -131,20 +131,38 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
           BottomNavigationBarItem(
             label: 'Home',
             icon: _currentIndex == 0
-                ? Image.asset("asset/image/Home-fill.png")
-                : Image.asset("asset/image/Home.png"),
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: 3.0),
+                    child: Image.asset("asset/image/Home-fill.png"),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.only(bottom: 3.0),
+                    child: Image.asset("asset/image/Home.png"),
+                  ),
           ),
           BottomNavigationBarItem(
             label: 'Search',
             icon: _currentIndex == 1
-                ? Image.asset("asset/image/Search-fill.png")
-                : Image.asset("asset/image/Search.png"),
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: 3.0),
+                    child: Image.asset("asset/image/Search-fill.png"),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.only(bottom: 3.0),
+                    child: Image.asset("asset/image/Search.png"),
+                  ),
           ),
           BottomNavigationBarItem(
             label: 'Library',
             icon: _currentIndex == 2
-                ? Image.asset("asset/image/Document-fill.png")
-                : Image.asset("asset/image/Document.png"),
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: 3.0),
+                    child: Image.asset("asset/image/Document-fill.png"),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.only(bottom: 3.0),
+                    child: Image.asset("asset/image/Document.png"),
+                  ),
           ),
         ],
       ),

@@ -72,6 +72,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFF0E0E29),
       appBar: AppBar(
+        elevation: 0,
         centerTitle: true,
         backgroundColor: const Color(0xFF0E0E29),
         leading: IconButton(
@@ -114,19 +115,31 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
         },
         items: [
           BottomNavigationBarItem(
-            label: 'Home',
-            icon: Image.asset("asset/image/Bookmark.png"),
+            label: 'Bookmark',
+            icon: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Image.asset("asset/image/Bookmark.png"),
+            ),
           ),
           BottomNavigationBarItem(
-            label: 'Search',
-            icon: Image.asset("asset/image/Paper.png"),
+            label: 'Chapters',
+            icon: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Image.asset("asset/image/Paper.png"),
+            ),
           ),
           BottomNavigationBarItem(
-              label: 'Library',
-              icon: Image.asset("asset/image/Time Square.png")),
+              label: 'Speed 2x',
+              icon: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+                child: Image.asset("asset/image/Time Square.png"),
+              )),
           BottomNavigationBarItem(
-              label: 'Library',
-              icon: Image.asset("asset/image/Arrow - Down Square.png")),
+              label: 'Download',
+              icon: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+                child: Image.asset("asset/image/Arrow - Down Square.png"),
+              )),
         ],
       ),
       body: Padding(
@@ -283,14 +296,15 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
                           await audioPlayer.resume();
                         }
                       },
-                      child: Container(
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
                         width: 72,
                         height: 72,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: isPlaying
-                                ? const AssetImage("asset/image/Play2.png")
-                                : const AssetImage("asset/image/pause.png"),
+                                ? const AssetImage("asset/image/pause.png")
+                                : const AssetImage("asset/image/Play2.png"),
                             fit: BoxFit.fill,
                           ),
                         ),
