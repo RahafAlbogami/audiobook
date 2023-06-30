@@ -23,6 +23,7 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: const Color(0xFF0E0E29),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),

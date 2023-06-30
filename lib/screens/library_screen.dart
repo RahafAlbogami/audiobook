@@ -16,30 +16,55 @@ class _LibraryScreenState extends State<LibraryScreen> {
       bookCover: "asset/image/book cover 1.png",
       title: "The Black Witch",
       authoer: "Laurie Forest",
+      rate: "4.0",
+      tags: ["Fantasy", "Drama", "Fiction"],
+      summary: "",
+      audioUrl: "",
+      isRecommended: true
     ),
     Book(
       poster: "asset/image/Image Placeholder 3.jpg",
       bookCover: "asset/image/book cover 2.png",
       title: "A Promised Land",
       authoer: "Barrack Obama",
+      rate: "4.0",
+      tags: ["Fantasy", "Drama", "Fiction"],
+      summary: "",
+      audioUrl: "",
+      isRecommended: true
     ),
     Book(
       poster: "asset/image/Image Placeholder 1.png",
       bookCover: "asset/image/book cover 3.png",
       title: "Harry Potter and the Prisoner of Azkaban",
       authoer: "J.K. Rowling",
+      rate: "4.0",
+      tags: ["Fantasy", "Drama", "Fiction"],
+      summary: "",
+      audioUrl: "",
+      isRecommended: true
     ),
     Book(
       poster: "asset/image/Image Placeholder 3.jpg",
       bookCover: "asset/image/book cover 4.png",
       title: "The Kidnapper’s Accomplice",
       authoer: "C. J. Archer",
+      rate: "4.0",
+      tags: ["Fantasy", "Drama", "Fiction"],
+      summary: "",
+      audioUrl: "",
+      isRecommended: true
     ),
     Book(
       poster: "asset/image/Image Placeholder 1.png",
       bookCover: "asset/image/book cover 1.png",
       title: "Light Mage",
       authoer: "Title",
+      rate: "4.0",
+      tags: ["Fantasy", "Drama", "Fiction"],
+       summary: "",
+      audioUrl: "",
+      isRecommended: true
     )
   ];
 

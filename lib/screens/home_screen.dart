@@ -28,35 +28,115 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Book> listOfBooks = [
     Book(
-      poster: "asset/image/SwordOfDestiny.jpg",
-      bookCover: "asset/image/book cover 1.png",
-      title: "Sword of Destiny",
-      authoer: "Andrzej Sapkowski",
-    ),
+        poster: "asset/image/theLastWhish.jpg",
+        bookCover: "asset/image/theLastWhishBookCover.jpg",
+        title: "The Last Wish",
+        authoer: "Andrzej Sapkowski",
+        rate: "4.0",
+        tags: ["Fantasy", "Drama", "Fiction"],
+        summary: "",
+        audioUrl: "",
+        isRecommended: true),
     Book(
-      poster: "asset/image/theLastWhish.jpg",
-      bookCover: "asset/image/book cover 1.png",
-      title: "The Last Wish",
-      authoer: "Andrzej Sapkowski",
-    ),
+        poster: "asset/image/SwordOfDestiny.jpg",
+        bookCover: "asset/image/SwordOfDestinyBookCover.jpg",
+        title: "Sword of Destiny",
+        authoer: "Andrzej Sapkowski",
+        rate: "4.0",
+        tags: ["Fantasy", "Drama", "Fiction"],
+        summary: "",
+        audioUrl: "",
+        isRecommended: true),
     Book(
-      poster: "asset/image/timeOfContempt.jpg",
-      bookCover: "asset/image/book cover 1.png",
-      title: "The Time of Contempt",
-      authoer: "Andrzej Sapkowski",
-    ),
+        poster: "asset/image/bloodOfElves.jpg",
+        bookCover: "asset/image/bloodOfElvesBookCover.jpg",
+        title: "Blood of Elves",
+        authoer: "Andrzej Sapkowski",
+        rate: "4.0",
+        tags: ["Fantasy", "Drama", "Fiction"],
+        summary: "",
+        audioUrl: "",
+        isRecommended: true),
     Book(
-      poster: "asset/image/towerOfSwallows.jpg",
-      bookCover: "asset/image/book cover 1.png",
-      title: "The Tower of Swallows",
-      authoer: "Andrzej Sapkowski",
-    ),
+        poster: "asset/image/timeOfContempt.jpg",
+        bookCover: "asset/image/timeOfContemptBookCover.jpg",
+        title: "The Time of Contempt",
+        authoer: "Andrzej Sapkowski",
+        rate: "4.0",
+        tags: ["Fantasy", "Drama", "Fiction"],
+        summary: "",
+        audioUrl: "",
+        isRecommended: true),
     Book(
-      poster: "asset/image/ladyOfTheLake.jpg",
-      bookCover: "asset/image/book cover 1.png",
-      title: "The Lady of the Lake",
-      authoer: "Andrzej Sapkowski",
-    )
+        poster: "asset/image/towerOfSwallows.jpg",
+        bookCover: "asset/image/towerOfSwallowsBookCover.jpg",
+        title: "The Tower of Swallows",
+        authoer: "Andrzej Sapkowski",
+        rate: "4.0",
+        tags: ["Fantasy", "Drama", "Fiction"],
+        summary: "",
+        audioUrl: "",
+        isRecommended: true),
+    Book(
+        poster: "asset/image/ladyOfTheLake.jpg",
+        bookCover: "asset/image/ladyOfTheLakeBookCover.jpg",
+        title: "The Lady of the Lake",
+        authoer: "Andrzej Sapkowski",
+        rate: "4.0",
+        tags: ["Fantasy", "Drama", "Fiction"],
+        summary: "",
+        audioUrl: "",
+        isRecommended: true),
+    Book(
+        poster: "",
+        bookCover: "asset/image/hp1_500x500._CB1198675309_.jpg",
+        title: "Harry Potter and the Philosopher’s Stone",
+        authoer: "J.K. Rowling",
+        rate: "4.0",
+        tags: ["Fantasy", "Drama", "Fiction"],
+        summary: "",
+        audioUrl: "",
+        isRecommended: false),
+    Book(
+        poster: "",
+        bookCover: "asset/image/hp2_500x500._CB1198675309_.jpg",
+        title: "THarry Potter and the Chamber of Secrets",
+        authoer: "J.K. Rowling",
+        rate: "4.0",
+        tags: ["Fantasy", "Drama", "Fiction"],
+        summary: "",
+        audioUrl: "",
+        isRecommended: false),
+    Book(
+        poster: "",
+        bookCover: "asset/image/Image Placeholder 4.png",
+        title: "Harry Potter and the Prisoner of Azkaban",
+        authoer: "J.K. Rowling",
+        rate: "4.0",
+        tags: ["Fantasy", "Drama", "Fiction"],
+        summary: "",
+        audioUrl: "",
+        isRecommended: false),
+    Book(
+        poster: "",
+        bookCover: "asset/image/hp6_500x500._CB1198675309_.jpg",
+        title: "Harry Potter and the Half-Blood Prince",
+        authoer: "J.K. Rowling",
+        rate: "4.0",
+        tags: ["Fantasy", "Drama", "Fiction"],
+        summary: "",
+        audioUrl: "",
+        isRecommended: false),
+    Book(
+        poster: "",
+        bookCover: "asset/image/hp7_500x500._CB1198675309_.jpg",
+        title: "Harry Potter and the Deathly Hallows",
+        authoer: "J.K. Rowling",
+        rate: "4.0",
+        tags: ["Fantasy", "Drama", "Fiction"],
+        summary: "",
+        audioUrl: "",
+        isRecommended: false)
   ];
 
   @override
@@ -154,8 +234,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      ...List.generate(listOfBooks.length,
-                          (index) => recommendedItem(listOfBooks[index])),
+                      ...List.generate(
+                          listOfBooks
+                              .where((i) => i.isRecommended)
+                              .toList()
+                              .length,
+                          (index) => recommendedItem(listOfBooks
+                              .where((i) => i.isRecommended)
+                              .toList()[index])),
                     ],
                   ),
                 ),
@@ -196,8 +282,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      ...List.generate(listOfBooks.length,
-                          (index) => bestSellerItem(listOfBooks[index])),
+                      ...List.generate(
+                          listOfBooks
+                              .where((i) => !i.isRecommended)
+                              .toList()
+                              .length,
+                          (index) => bestSellerItem(listOfBooks
+                              .where((i) => !i.isRecommended)
+                              .toList()[index])),
                     ],
                   ),
                 ),
@@ -236,10 +328,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    newRelease(listOfBooks[0].bookCover),
-                    newRelease(listOfBooks[0].bookCover),
-                    newRelease(listOfBooks[0].bookCover),
-                    newRelease(listOfBooks[0].bookCover),
+                    ...List.generate(
+                        listOfBooks
+                            .where((i) => i.isRecommended)
+                            .toList()
+                            .length,
+                        (index) => newRelease(listOfBooks
+                            .where((i) => i.isRecommended)
+                            .toList()[index])),
                   ],
                 ),
               ),
@@ -277,10 +373,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    newRelease(listOfBooks[0].bookCover),
-                    newRelease(listOfBooks[0].bookCover),
-                    newRelease(listOfBooks[0].bookCover),
-                    newRelease(listOfBooks[0].bookCover),
+                    ...List.generate(
+                        listOfBooks
+                            .where((i) => !i.isRecommended)
+                            .toList()
+                            .length,
+                        (index) => newRelease(listOfBooks
+                            .where((i) => !i.isRecommended)
+                            .toList()[index])),
                   ],
                 ),
               ),
@@ -328,7 +428,10 @@ class _HomeScreenState extends State<HomeScreen> {
       padding: const EdgeInsets.fromLTRB(10, 0, 6, 0),
       child: GestureDetector(
         onTap: () => Navigator.of(context).push(
-          EnterRoute(enterPage: const BookDetailsScreen()),
+          EnterRoute(
+              enterPage: BookDetailsScreen(
+            bookDetail: item,
+          )),
         ),
         child: SizedBox(
           width: 200,
@@ -358,191 +461,196 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget bestSellerItem(Book item) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(5, 0, 6, 0),
-      child: Container(
-        width: 350,
-        height: 135,
-        padding: const EdgeInsets.all(10),
-        decoration: ShapeDecoration(
-          color: const Color(0xFF2E2E5D),
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(width: 0.50, color: Color(0xFF0E0E29)),
-            borderRadius: BorderRadius.circular(12),
+      child: GestureDetector(
+        onTap: () => Navigator.of(context).push(
+          EnterRoute(
+              enterPage: BookDetailsScreen(
+            bookDetail: item,
+          )),
+        ),
+        child: Container(
+          width: 350,
+          height: 135,
+          padding: const EdgeInsets.all(10),
+          decoration: ShapeDecoration(
+            color: const Color(0xFF2E2E5D),
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(width: 0.50, color: Color(0xFF0E0E29)),
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 120,
+                height: 120,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 120,
+                      height: 120,
+                      decoration: ShapeDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(item.bookCover),
+                          fit: BoxFit.fill,
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 16),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: 190,
+                        child: Text(
+                          item.title,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      SizedBox(
+                        width: 155,
+                        child: Text(
+                          item.authoer,
+                          style: const TextStyle(
+                            color: Color(0xFFEBEBF5),
+                            fontSize: 12,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: 120,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: 20,
+                          height: 20,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(),
+                          child: Image.asset("asset/image/star-filled.png"),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(),
+                          child: Image.asset("asset/image/star-filled.png"),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(),
+                          child: Image.asset("asset/image/star-filled.png"),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(),
+                          child: Image.asset("asset/image/star-filled.png"),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(),
+                          child: Image.asset("asset/image/star-outlined.png"),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+      ),
+    );
+  }
+
+  Widget newRelease(Book item) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
+      child: GestureDetector(
+        onTap: () => Navigator.of(context).push(
+          EnterRoute(
+              enterPage: BookDetailsScreen(
+            bookDetail: item,
+          )),
+        ),
+        child: Column(
           children: [
             SizedBox(
-              width: 120,
-              height: 120,
+              width: 160,
+              height: 160,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    width: 120,
-                    height: 120,
-                    decoration: ShapeDecoration(
-                      image:  DecorationImage(
-                        image:
-                            AssetImage(item.bookCover),
+                    width: 160,
+                    height: 160,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(item.bookCover),
                         fit: BoxFit.fill,
                       ),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4)),
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(width: 16),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children:  [
-                    SizedBox(
-                      width: 190,
-                      child: Text(
-                        item.title,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    SizedBox(
-                      width: 155,
-                      child: Text(
-                        item.authoer,
-                        style: const TextStyle(
-                          color: Color(0xFFEBEBF5),
-                          fontSize: 12,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                SizedBox(
-                  width: 120,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        width: 20,
-                        height: 20,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: const BoxDecoration(),
-                        child: Image.asset("asset/image/star-filled.png"),
-                      ),
-                      Container(
-                        width: 20,
-                        height: 20,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: const BoxDecoration(),
-                        child: Image.asset("asset/image/star-filled.png"),
-                      ),
-                      Container(
-                        width: 20,
-                        height: 20,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: const BoxDecoration(),
-                        child: Image.asset("asset/image/star-filled.png"),
-                      ),
-                      Container(
-                        width: 20,
-                        height: 20,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: const BoxDecoration(),
-                        child: Image.asset("asset/image/star-filled.png"),
-                      ),
-                      Container(
-                        width: 20,
-                        height: 20,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: const BoxDecoration(),
-                        child: Image.asset("asset/image/star-outlined.png"),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 10),
-                const SizedBox(
-                  width: 155,
-                  child: Text(
-                    '1,000+ Listeners',
-                    style: TextStyle(
-                      color: Color(0xFFEBEBF5),
-                      fontSize: 12,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                )
-              ],
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.015,
             ),
+            SizedBox(
+              width: 160,
+              child: Text(
+                item.title,
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Color(0xFFF5F5FA),
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w500,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            )
           ],
         ),
-      ),
-    );
-  }
-
-  Widget newRelease(String bookCover) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
-      child: Column(
-        children: [
-          SizedBox(
-            width: 160,
-            height: 160,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 160,
-                  height: 160,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(bookCover),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.015,
-          ),
-          const SizedBox(
-            width: 160,
-            child: Text(
-              'The Black Witch',
-              style: TextStyle(
-                color: Color(0xFFF5F5FA),
-                fontSize: 16,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          )
-        ],
       ),
     );
   }

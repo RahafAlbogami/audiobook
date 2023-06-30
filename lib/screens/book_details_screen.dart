@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../model/book_model.dart';
+
 class BookDetailsScreen extends StatefulWidget {
-  const BookDetailsScreen({super.key});
+  final Book bookDetail;
+
+  const BookDetailsScreen({super.key, required this.bookDetail});
 
   @override
   State<BookDetailsScreen> createState() => _BookDetailsScreenState();
@@ -19,10 +23,10 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text(
-          'Harry Potter and the Sorc...',
+        title: Text(
+          widget.bookDetail.title,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 16,
             fontFamily: 'Poppins',
@@ -51,10 +55,9 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                     Container(
                       width: 260,
                       height: 260,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         image: DecorationImage(
-                          image:
-                              AssetImage("asset/image/Image Placeholder 4.png"),
+                          image: AssetImage(widget.bookDetail.bookCover),
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -65,9 +68,9 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.025,
               ),
-              const Text(
-                'Harry Potter and the Sorcer...',
-                style: TextStyle(
+              Text(
+                widget.bookDetail.title,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20,
                   fontFamily: 'Poppins',
@@ -77,9 +80,9 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.005,
               ),
-              const Text(
-                'J.K. Rowling',
-                style: TextStyle(
+              Text(
+                widget.bookDetail.authoer,
+                style: const TextStyle(
                   color: Color(0xFFEBEBF5),
                   fontSize: 17,
                   fontFamily: 'Poppins',
@@ -144,13 +147,13 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.030,
                     ),
-                    const SizedBox(
+                    SizedBox(
                       width: 31,
                       height: 28,
                       child: Text(
-                        '4.0',
+                        widget.bookDetail.rate,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Color(0xFFD5D5E3),
                           fontSize: 20,
                           fontFamily: 'Poppins',
@@ -166,96 +169,8 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
               ),
               Row(
                 children: [
-                  Container(
-                    height: 29,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                    decoration: ShapeDecoration(
-                      color: null,
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(width: 1, color: Colors.white),
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          "Fantasy",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.020,
-                  ),
-                  Container(
-                    height: 29,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                    decoration: ShapeDecoration(
-                      color: null,
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(width: 1, color: Colors.white),
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          "Drama",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.020,
-                  ),
-                  Container(
-                    height: 29,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                    decoration: ShapeDecoration(
-                      color: null,
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(width: 1, color: Colors.white),
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          "Fiction",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  ...List.generate(widget.bookDetail.tags.toList().length,
+                      (index) => tags(widget.bookDetail.tags[index]))
                 ],
               ),
               SizedBox(
@@ -381,12 +296,12 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
-              const SizedBox(
+               SizedBox(
                 width: 303,
                 child: Text(
-                  'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.\n\nMollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt.\n\nVelit officia consequat duis enim velit mollit. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+                  widget.bookDetail.summary,
                   textAlign: TextAlign.justify,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color(0xFFD5D5E3),
                     fontSize: 14,
                     fontFamily: 'Poppins',
@@ -396,6 +311,39 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget tags(String tag) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 3),
+      child: Container(
+        height: 29,
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        decoration: ShapeDecoration(
+          color: null,
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(width: 1, color: Colors.white),
+            borderRadius: BorderRadius.circular(24),
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              tag,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
         ),
       ),
     );

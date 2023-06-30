@@ -3,43 +3,20 @@ class Book {
   final String bookCover;
   final String title;
   final String authoer;
+  final String rate;
+  final List<String> tags;
+  final String summary;
+  final String audioUrl;
+  final bool isRecommended;
 
   Book(
       {required this.poster,
       required this.bookCover,
       required this.title,
-      required this.authoer});
-
-  // List<Book> listOfBooks = [
-  //   Book(
-  //     poster: "asset/image/Image Placeholder 1.png",
-  //     bookCover: "asset/image/book cover 1.png",
-  //     title: "Title",
-  //     authoer: "Title",
-  //   ),
-  //   Book(
-  //     poster: "asset/image/Image Placeholder 3.jpg",
-  //     bookCover: "asset/image/book cover 1.png",
-  //     title: "Title",
-  //     authoer: "Title",
-  //   ),
-  //   Book(
-  //     poster: "asset/image/Image Placeholder 1.png",
-  //     bookCover: "asset/image/book cover 1.png",
-  //     title: "Title",
-  //     authoer: "Title",
-  //   ),
-  //   Book(
-  //     poster: "asset/image/Image Placeholder 3.jpg",
-  //     bookCover: "asset/image/book cover 1.png",
-  //     title: "Title",
-  //     authoer: "Title",
-  //   ),
-  //   Book(
-  //     poster: "asset/image/Image Placeholder 1.png",
-  //     bookCover: "asset/image/book cover 1.png",
-  //     title: "Title",
-  //     authoer: "Title",
-  //   )
-  // ];
+      required this.authoer,
+      required this.rate,
+      required this.tags,
+      required this.summary,
+      required this.audioUrl,
+      required this.isRecommended});
 }
