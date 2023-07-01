@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:audiobook/modelSheet/chapters_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
@@ -14,10 +15,16 @@ class AudioPlayerScreen extends StatefulWidget {
 }
 
 class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
-  AudioPlayer audioPlayer = AudioPlayer();
+  AudioPlayer audioPlayer = AudioPlayer()
+    ..setPlayerMode(PlayerMode.mediaPlayer);
   bool isPlaying = false;
   Duration duration = Duration.zero;
   Duration position = Duration.zero;
+  int currentChapter = 0;
+  int maxChapters = 0;
+  int minChapters = 0;
+  int currentSpeed = 1;
+  int selectedChapter = 0;
 
   String formatTime(Duration duration) {
     String twoDigits(int n) => n.toString().padLeft(2, "0");
@@ -38,27 +45,69 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
     setAudio();
 
     audioPlayer.onPlayerStateChanged.listen((event) {
-      setState(() {
-        isPlaying = event == PlayerState.playing;
-      });
+      if (mounted) {
+        setState(() {
+          isPlaying = event == PlayerState.playing;
+        });
+      }
     });
 
     audioPlayer.onDurationChanged.listen((event) {
-      setState(() {
-        duration = event;
-      });
+      if (mounted) {
+        setState(() {
+          duration = event;
+        });
+      }
     });
 
     audioPlayer.onPositionChanged.listen((event) {
-      setState(() {
-        position = event;
-      });
+      if (mounted) {
+        setState(() {
+          position = event;
+        });
+      }
+    });
+
+    audioPlayer.onPlayerComplete.listen((event) {
+      if (mounted) {
+        setState(() {
+          currentChapter = currentChapter + 1;
+        });
+      }
     });
   }
 
   Future setAudio() async {
-    String url = widget.bookDetail.audioUrl;
+    String url = widget.bookDetail.chapters[currentChapter].chapterUrl;
     audioPlayer.setSourceUrl(url);
+
+    if (mounted) {
+      setState(() {
+        maxChapters = widget.bookDetail.chapters.length - 1;
+      });
+    }
+  }
+
+  Future changeAudio(int chapterIndex) async {
+    String url = widget.bookDetail.chapters[chapterIndex].chapterUrl;
+    audioPlayer.setSourceUrl(url);
+
+    audioPlayer.resume();
+  }
+
+  Future speedAudio() async {
+    if (currentSpeed == 2) {
+      await audioPlayer.setPlaybackRate(1);
+      setState(() {
+        currentSpeed = 1;
+      });
+    } else {
+      await audioPlayer.setPlaybackRate(2);
+      setState(() {
+        currentSpeed = 2;
+      });
+    }
+    audioPlayer.resume();
   }
 
   @override
@@ -110,8 +159,20 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
           fontFamily: 'Poppins',
           fontWeight: FontWeight.w500,
         ),
-        onTap: (value) {
+        onTap: (value) async {
           // Respond to item press.
+
+          if (value == 1) {
+            selectedChapter = await ChaptersBottomSheet()
+                .buildBottomsheet(context, widget.bookDetail.chapters);
+
+            setState(() {
+              currentChapter = selectedChapter;
+            });
+            await changeAudio(currentChapter);
+          } else if (value == 2) {
+            await speedAudio();
+          }
         },
         items: [
           BottomNavigationBarItem(
@@ -129,17 +190,19 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
             ),
           ),
           BottomNavigationBarItem(
-              label: 'Speed 2x',
-              icon: Padding(
+            label: currentSpeed == 1 ? "Speed 2x" : "Speed 1x",
+            icon: Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-                child: Image.asset("asset/image/Time Square.png"),
-              )),
+              child: Image.asset("asset/image/Time Square.png"),
+            ),
+          ),
           BottomNavigationBarItem(
-              label: 'Download',
-              icon: Padding(
+            label: 'Download',
+            icon: Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-                child: Image.asset("asset/image/Arrow - Down Square.png"),
-              )),
+              child: Image.asset("asset/image/Arrow - Down Square.png"),
+            ),
+          ),
         ],
       ),
       body: Padding(
@@ -277,14 +340,28 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
                         ),
                       ),
                     ),
-                    Container(
-                      width: 40,
-                      height: 40,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image:
-                              AssetImage("asset/image/Arrow - Left Circle.png"),
-                          fit: BoxFit.fill,
+                    GestureDetector(
+                      onTap: () async {
+                        if (currentChapter > minChapters) {
+                          setState(() {
+                            currentChapter = currentChapter - 1;
+                          });
+                          await changeAudio(currentChapter);
+                        }
+                      },
+                      child: Opacity(
+                        opacity: currentChapter > minChapters ? 1 : 0.5,
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          width: 40,
+                          height: 40,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  "asset/image/Arrow - Left Circle.png"),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -310,14 +387,28 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
                         ),
                       ),
                     ),
-                    Container(
-                      width: 40,
-                      height: 40,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                              "asset/image/Arrow - Right Circle.png"),
-                          fit: BoxFit.fill,
+                    GestureDetector(
+                      onTap: () async {
+                        if (currentChapter < maxChapters) {
+                          setState(() {
+                            currentChapter = currentChapter + 1;
+                          });
+                          await changeAudio(currentChapter);
+                        }
+                      },
+                      child: Opacity(
+                        opacity: currentChapter < maxChapters ? 1 : 0.5,
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          width: 40,
+                          height: 40,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  "asset/image/Arrow - Right Circle.png"),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -333,7 +424,19 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
                     ),
                   ],
                 ),
-              )
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5.0),
+                child: Text(
+                  "Chapter ${currentChapter + 1}: ${widget.bookDetail.chapters[currentChapter].chapterName}",
+                  style: const TextStyle(
+                    color: Color(0xFF9292A2),
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
