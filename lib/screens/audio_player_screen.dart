@@ -177,30 +177,62 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
         items: [
           BottomNavigationBarItem(
             label: 'Bookmark',
-            icon: Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: Image.asset("asset/image/Bookmark.png"),
+            icon: Column(
+              children: [
+                SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: Image.asset("asset/image/Bookmark.png"),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.005,
+                )
+              ],
             ),
           ),
           BottomNavigationBarItem(
             label: 'Chapters',
-            icon: Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: Image.asset("asset/image/Paper.png"),
+            icon: Column(
+              children: [
+                SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: Image.asset("asset/image/Paper.png"),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.005,
+                )
+              ],
             ),
           ),
           BottomNavigationBarItem(
             label: currentSpeed == 1 ? "Speed 2x" : "Speed 1x",
-            icon: Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: Image.asset("asset/image/Time Square.png"),
+            icon: Column(
+              children: [
+                SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: Image.asset("asset/image/Time Square.png"),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.005,
+                )
+              ],
             ),
           ),
           BottomNavigationBarItem(
             label: 'Download',
-            icon: Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: Image.asset("asset/image/Arrow - Down Square.png"),
+            icon: Column(
+              children: [
+                SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: Image.asset("asset/image/Arrow - Down Square.png"),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.005,
+                )
+              ],
             ),
           ),
         ],

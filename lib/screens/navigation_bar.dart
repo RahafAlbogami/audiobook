@@ -129,39 +129,88 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
         },
         items: [
           BottomNavigationBarItem(
-            label: 'Home',
-            icon: _currentIndex == 0
-                ? Padding(
-                    padding: const EdgeInsets.only(bottom: 3.0),
-                    child: Image.asset("asset/image/Home-fill.png"),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.only(bottom: 3.0),
-                    child: Image.asset("asset/image/Home.png"),
-                  ),
-          ),
+              label: 'Home',
+              icon: _currentIndex == 0
+                  ? Column(
+                      children: [
+                        SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: Image.asset("asset/image/Home-fill.png"),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.005,
+                        )
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: Image.asset("asset/image/Home.png"),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.005,
+                        )
+                      ],
+                    )),
           BottomNavigationBarItem(
             label: 'Search',
             icon: _currentIndex == 1
-                ? Padding(
-                    padding: const EdgeInsets.only(bottom: 3.0),
-                    child: Image.asset("asset/image/Search-fill.png"),
+                ? Column(
+                    children: [
+                      SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: Image.asset("asset/image/Search-fill.png"),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.005,
+                      )
+                    ],
                   )
-                : Padding(
-                    padding: const EdgeInsets.only(bottom: 3.0),
-                    child: Image.asset("asset/image/Search.png"),
+                : Column(
+                    children: [
+                      SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: Image.asset("asset/image/Search.png"),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.005,
+                      )
+                    ],
                   ),
           ),
           BottomNavigationBarItem(
             label: 'Library',
             icon: _currentIndex == 2
-                ? Padding(
-                    padding: const EdgeInsets.only(bottom: 3.0),
-                    child: Image.asset("asset/image/Document-fill.png"),
+                ? Column(
+                    children: [
+                      SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: Image.asset("asset/image/Document-fill.png")),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.005,
+                      )
+                    ],
                   )
-                : Padding(
-                    padding: const EdgeInsets.only(bottom: 3.0),
-                    child: Image.asset("asset/image/Document.png"),
+                : Column(
+                    children: [
+                      SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 0),
+                          child: Image.asset("asset/image/Document.png"),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.005,
+                      )
+                    ],
                   ),
           ),
         ],

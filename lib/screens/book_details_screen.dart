@@ -102,8 +102,8 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
-                          width: 24,
-                          height: 24,
+                          width: 20,
+                          height: 20,
                           clipBehavior: Clip.antiAlias,
                           decoration: const BoxDecoration(),
                           child: Image.asset("asset/image/star-filled.png"),
@@ -200,30 +200,17 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                SizedBox(
+                                Container(
                                   width: 20,
                                   height: 20,
-                                  child: Stack(
-                                    children: [
-                                      Positioned(
-                                        left: 1.67,
-                                        top: 1.67,
-                                        child: Container(
-                                          width: 16.67,
-                                          height: 16.67,
-                                          decoration: const BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "asset/image/Play.png"),
-                                              fit: BoxFit.fill,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage("asset/image/Play.png"),
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
                                 ),
                                 const Text(
@@ -253,30 +240,18 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              SizedBox(
+                              Container(
                                 width: 20,
                                 height: 20,
-                                child: Stack(
-                                  children: [
-                                    Positioned(
-                                      left: 2.50,
-                                      top: 1.67,
-                                      child: Container(
-                                        width: 15,
-                                        height: 16.67,
-                                        decoration: const BoxDecoration(
-                                          image: DecorationImage(
-                                            image: AssetImage(
-                                                "asset/image/Document.png"),
-                                            fit: BoxFit.fill,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        "asset/image/Document-fill.png"),
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                               ),
                               const Text(
@@ -310,7 +285,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     SizedBox(
-                      width:  MediaQuery.of(context).size.width * 1,
+                      width: MediaQuery.of(context).size.width * 1,
                       child: Text(
                         widget.bookDetail.summary,
                         textAlign: TextAlign.justify,
