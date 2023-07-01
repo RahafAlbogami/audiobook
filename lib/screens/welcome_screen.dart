@@ -1,3 +1,4 @@
+import 'package:audiobook/screens/navigation_bar.dart';
 import 'package:audiobook/screens/personalization_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -135,33 +136,38 @@ class WelcomeScreen extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Container(
-                  width: 295,
-                  height: 56,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: const BorderSide(width: 1, color: Colors.white),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text(
-                        'Skip',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w500,
-                        ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).pushAndRemoveUntil(
+                      EnterRoute(enterPage: const NavigationBarScreen()),
+                      (Route<dynamic> route) => false),
+                  child: Container(
+                    width: 295,
+                    height: 56,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 32, vertical: 16),
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(width: 1, color: Colors.white),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                    ],
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: const [
+                        Text(
+                          'Skip',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 )
               ],

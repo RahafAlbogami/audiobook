@@ -86,6 +86,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
         maxChapters = widget.bookDetail.chapters.length - 1;
       });
     }
+
   }
 
   Future changeAudio(int chapterIndex) async {
@@ -460,7 +461,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: Text(
-                  "Chapter ${currentChapter + 1}: ${widget.bookDetail.chapters[currentChapter].chapterName}",
+                 widget.bookDetail.chapters[currentChapter].chapterName,
                   style: const TextStyle(
                     color: Color(0xFF9292A2),
                     fontSize: 14,

@@ -59,8 +59,24 @@ class ChaptersBottomSheet extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  ...List.generate(chapters.length,
-                      (index) => chapterItem(context, chapters[index], index))
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    child:
+                        NotificationListener<OverscrollIndicatorNotification>(
+                      onNotification: (overScroll) {
+                        overScroll.disallowIndicator();
+                        return true;
+                      },
+                      child: ListView(
+                        children: [
+                          ...List.generate(
+                              chapters.length,
+                              (index) =>
+                                  chapterItem(context, chapters[index], index))
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             );

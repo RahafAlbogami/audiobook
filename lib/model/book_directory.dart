@@ -16,15 +16,81 @@ class BookDirectory {
       chapters: [
         Chapters(
           chapterId: 1,
-          chapterName: "First Chapter",
+          chapterName: "Part 1",
           chapterUrl:
-              "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/01.mp3",
+              "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/01.mp3?_=1",
         ),
         Chapters(
           chapterId: 2,
-          chapterName: "Second Chapter",
+          chapterName: "Part 2",
           chapterUrl:
               "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/02.mp3",
+        ),
+        Chapters(
+          chapterId: 3,
+          chapterName: "Part 3",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/03.mp3",
+        ),
+        Chapters(
+          chapterId: 4,
+          chapterName: "Part 4",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/04.mp3",
+        ),
+        Chapters(
+          chapterId: 5,
+          chapterName: "Part 5",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/05.mp3",
+        ),
+        Chapters(
+          chapterId: 6,
+          chapterName: "Part 6",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/06.mp3",
+        ),
+        Chapters(
+          chapterId: 7,
+          chapterName: "Part 7",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/07.mp3",
+        ),
+        Chapters(
+          chapterId: 8,
+          chapterName: "Part 8",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/08.mp3",
+        ),
+        Chapters(
+          chapterId: 9,
+          chapterName: "Part 9",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/09.mp3",
+        ),
+        Chapters(
+          chapterId: 10,
+          chapterName: "Part 10",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/10.mp3",
+        ),
+        Chapters(
+          chapterId: 11,
+          chapterName: "Part 11",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/11.mp3",
+        ),
+        Chapters(
+          chapterId: 12,
+          chapterName: "Part 12",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/12.mp3",
+        ),
+        Chapters(
+          chapterId: 13,
+          chapterName: "Part 13",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/13.mp3",
         ),
       ],
     ),
@@ -43,14 +109,9 @@ class BookDirectory {
         chapters: [
           Chapters(
               chapterId: 1,
-              chapterName: "First Chapter",
+              chapterName: "Complete",
               chapterUrl:
                   "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=1"),
-          Chapters(
-              chapterId: 2,
-              chapterName: "Second Chapter",
-              chapterUrl:
-                  "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/01.mp3?_=1"),
         ]),
     Book(
         poster: "asset/image/bloodOfElves.jpg",
@@ -67,14 +128,59 @@ class BookDirectory {
         chapters: [
           Chapters(
               chapterId: 1,
-              chapterName: "First Chapter",
+              chapterName: "Part 1",
               chapterUrl:
-                  "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=1"),
+                  "https://ipaudio6.com/wp-content/uploads/BOOKAUDIO/Blood%20of%20Elves/1.mp3?_=1"),
           Chapters(
               chapterId: 2,
-              chapterName: "Second Chapter",
+              chapterName: "Part 2",
               chapterUrl:
-                  "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=2")
+                  "https://ipaudio6.com/wp-content/uploads/BOOKAUDIO/Blood%20of%20Elves/2.mp3?_=2"),
+          Chapters(
+              chapterId: 3,
+              chapterName: "Part 3",
+              chapterUrl:
+                  "https://ipaudio6.com/wp-content/uploads/BOOKAUDIO/Blood%20of%20Elves/3.mp3?_=3"),
+          Chapters(
+              chapterId: 4,
+              chapterName: "Part 4",
+              chapterUrl:
+                  "https://ipaudio6.com/wp-content/uploads/BOOKAUDIO/Blood%20of%20Elves/4.mp3?_=4"),
+          Chapters(
+              chapterId: 5,
+              chapterName: "Part 5",
+              chapterUrl:
+                  "https://ipaudio6.com/wp-content/uploads/BOOKAUDIO/Blood%20of%20Elves/5.mp3?_=5"),
+          Chapters(
+              chapterId: 6,
+              chapterName: "Part 6",
+              chapterUrl:
+                  "https://ipaudio6.com/wp-content/uploads/BOOKAUDIO/Blood%20of%20Elves/6.mp3?_=6"),
+          Chapters(
+              chapterId: 7,
+              chapterName: "Part 7",
+              chapterUrl:
+                  "https://ipaudio6.com/wp-content/uploads/BOOKAUDIO/Blood%20of%20Elves/7.mp3?_=7"),
+          Chapters(
+              chapterId: 8,
+              chapterName: "Part 8",
+              chapterUrl:
+                  "https://ipaudio6.com/wp-content/uploads/BOOKAUDIO/Blood%20of%20Elves/8.mp3?_=8"),
+          Chapters(
+              chapterId: 9,
+              chapterName: "Part 9",
+              chapterUrl:
+                  "https://ipaudio6.com/wp-content/uploads/BOOKAUDIO/Blood%20of%20Elves/9.mp3?_=9"),
+          Chapters(
+              chapterId: 10,
+              chapterName: "Part 10",
+              chapterUrl:
+                  "https://ipaudio6.com/wp-content/uploads/BOOKAUDIO/Blood%20of%20Elves/10.mp3?_=10"),
+          Chapters(
+              chapterId: 11,
+              chapterName: "Part 11",
+              chapterUrl:
+                  "https://ipaudio6.com/wp-content/uploads/BOOKAUDIO/Blood%20of%20Elves/11.mp3?_=11"),
         ]),
     Book(
         poster: "asset/image/timeOfContempt.jpg",
@@ -90,40 +196,152 @@ class BookDirectory {
         isRecommended: true,
         chapters: [
           Chapters(
+            chapterId: 0,
+            chapterName: "Part 0",
+            chapterUrl:
+                "https://files.audiobookss.com/audio/free-full-audiobook-the-time-of-contempt-the-witcher-book-2-by-andrzej-sapkowski/1072566310/Time%20of%20Contempt%20The%20Witcher,%20Book%202%20(Unabridged)%20-%20001-840874795.mp3",
+          ),
+          Chapters(
               chapterId: 1,
-              chapterName: "First Chapter",
+              chapterName: "Part 1",
               chapterUrl:
-                  "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=1"),
+                  "https://files.audiobookss.com/audio/free-full-audiobook-the-time-of-contempt-the-witcher-book-2-by-andrzej-sapkowski/1072566310/Time%20of%20Contempt%20The%20Witcher,%20Book%202%20(Unabridged)%20-%20Chapter%202-840874765.mp3"),
           Chapters(
               chapterId: 2,
-              chapterName: "Second Chapter",
+              chapterName: "Part 2",
               chapterUrl:
-                  "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=2")
+                  "https://files.audiobookss.com/audio/free-full-audiobook-the-time-of-contempt-the-witcher-book-2-by-andrzej-sapkowski/1072566310/Time%20of%20Contempt%20The%20Witcher,%20Book%202%20(Unabridged)%20-%20Chapter%203-840874696.mp3"),
+          Chapters(
+              chapterId: 3,
+              chapterName: "Part 3",
+              chapterUrl:
+                  "https://files.audiobookss.com/audio/free-full-audiobook-the-time-of-contempt-the-witcher-book-2-by-andrzej-sapkowski/1072566310/Time%20of%20Contempt%20The%20Witcher,%20Book%202%20(Unabridged)%20-%20Chapter%204-840874660.mp3"),
+          Chapters(
+              chapterId: 4,
+              chapterName: "Part 4",
+              chapterUrl:
+                  "https://files.audiobookss.com/audio/free-full-audiobook-the-time-of-contempt-the-witcher-book-2-by-andrzej-sapkowski/1072566310/Time%20of%20Contempt%20The%20Witcher,%20Book%202%20(Unabridged)%20-%20Chapter%205-840874615.mp3"),
+          Chapters(
+              chapterId: 5,
+              chapterName: "Part 5",
+              chapterUrl:
+                  "https://files.audiobookss.com/audio/free-full-audiobook-the-time-of-contempt-the-witcher-book-2-by-andrzej-sapkowski/1072566310/Time%20of%20Contempt%20The%20Witcher,%20Book%202%20(Unabridged)%20-%20Chapter%206-840874567.mp3"),
+          Chapters(
+              chapterId: 6,
+              chapterName: "Part 6",
+              chapterUrl:
+                  "https://files.audiobookss.com/audio/free-full-audiobook-the-time-of-contempt-the-witcher-book-2-by-andrzej-sapkowski/1072566310/Time%20of%20Contempt%20The%20Witcher,%20Book%202%20(Unabridged)%20-%20Chapter%207-840874498.mp3"),
+          Chapters(
+              chapterId: 7,
+              chapterName: "Part 7",
+              chapterUrl:
+                  "https://files.audiobookss.com/audio/free-full-audiobook-the-time-of-contempt-the-witcher-book-2-by-andrzej-sapkowski/1072566310/Time%20of%20Contempt%20The%20Witcher,%20Book%202%20(Unabridged)%20-%20Chapter%208-840874441.mp3"),
         ]),
     Book(
-        poster: "asset/image/towerOfSwallows.jpg",
-        bookCover: "asset/image/towerOfSwallowsBookCover.jpg",
-        title: "The Tower of Swallows",
-        authoer: "Andrzej Sapkowski",
-        rate: "4.0",
-        tags: ["Fantasy", "Drama", "Fiction"],
-        summary:
-            "The world has fallen into war. Ciri, the child of prophecy, has vanished. Hunted by friends and foes alike, she has taken on the guise of a petty bandit and lives free for the first time in her life. But the net around her is closing. Geralt, the Witcher, has assembled a group of allies determined to rescue her. Both sides of the war have sent brutal mercenaries to hunt her down. Her crimes have made her famous.",
-        audioUrl:
-            "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/01.mp3",
-        isRecommended: true,
-        chapters: [
-          Chapters(
-              chapterId: 1,
-              chapterName: "First Chapter",
-              chapterUrl:
-                  "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=1"),
-          Chapters(
-              chapterId: 2,
-              chapterName: "Second Chapter",
-              chapterUrl:
-                  "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=2")
-        ]),
+      poster: "asset/image/towerOfSwallows.jpg",
+      bookCover: "asset/image/towerOfSwallowsBookCover.jpg",
+      title: "The Tower of Swallows",
+      authoer: "Andrzej Sapkowski",
+      rate: "4.0",
+      tags: ["Fantasy", "Drama", "Fiction"],
+      summary:
+          "The world has fallen into war. Ciri, the child of prophecy, has vanished. Hunted by friends and foes alike, she has taken on the guise of a petty bandit and lives free for the first time in her life. But the net around her is closing. Geralt, the Witcher, has assembled a group of allies determined to rescue her. Both sides of the war have sent brutal mercenaries to hunt her down. Her crimes have made her famous.",
+      audioUrl:
+          "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/01.mp3",
+      isRecommended: true,
+      chapters: [
+        Chapters(
+          chapterId: 1,
+          chapterName: "Part 1",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/01.mp3",
+        ),
+        Chapters(
+          chapterId: 2,
+          chapterName: "Part 2",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/02.mp3",
+        ),
+        Chapters(
+          chapterId: 3,
+          chapterName: "Part 3",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/03.mp3",
+        ),
+        Chapters(
+          chapterId: 4,
+          chapterName: "Part 4",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/04.mp3",
+        ),
+        Chapters(
+          chapterId: 5,
+          chapterName: "Part 5",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/05.mp3",
+        ),
+        Chapters(
+          chapterId: 6,
+          chapterName: "Part 6",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/06.mp3",
+        ),
+        Chapters(
+          chapterId: 7,
+          chapterName: "Part 7",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/07.mp3",
+        ),
+        Chapters(
+          chapterId: 8,
+          chapterName: "Part 8",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/08.mp3",
+        ),
+        Chapters(
+          chapterId: 9,
+          chapterName: "Part 9",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/09.mp3",
+        ),
+        Chapters(
+          chapterId: 10,
+          chapterName: "Part 10",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/10.mp3",
+        ),
+        Chapters(
+          chapterId: 11,
+          chapterName: "Part 11",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/11.mp3",
+        ),
+        Chapters(
+          chapterId: 12,
+          chapterName: "Part 12",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/12.mp3",
+        ),
+        Chapters(
+          chapterId: 13,
+          chapterName: "Part 13",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/13.mp3",
+        ),
+        Chapters(
+          chapterId: 13,
+          chapterName: "Part 14",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/14.mp3",
+        ),
+        Chapters(
+          chapterId: 13,
+          chapterName: "Part 15",
+          chapterUrl:
+              "https://ipaudio.club/wp-content/uploads/APP/Tower%20of%20Swallows/15.mp3",
+        ),
+      ],
+    ),
     Book(
         poster: "asset/image/ladyOfTheLake.jpg",
         bookCover: "asset/image/ladyOfTheLakeBookCover.jpg",
