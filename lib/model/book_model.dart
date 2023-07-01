@@ -8,6 +8,7 @@ class Book {
   final String summary;
   final String audioUrl;
   final bool isRecommended;
+  final List<Chapters> chapters;
 
   Book(
       {required this.poster,
@@ -18,5 +19,17 @@ class Book {
       required this.tags,
       required this.summary,
       required this.audioUrl,
-      required this.isRecommended});
+      required this.isRecommended,
+      required this.chapters});
+}
+
+class Chapters {
+  final int chapterId;
+  final String chapterName;
+  final String chapterUrl;
+
+  Chapters(
+      {required this.chapterId,
+      required this.chapterName,
+      required this.chapterUrl});
 }
