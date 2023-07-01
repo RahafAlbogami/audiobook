@@ -1,6 +1,8 @@
+import 'package:audiobook/model/book_directory.dart';
+import 'package:audiobook/model/book_model.dart';
+import 'package:audiobook/screens/book_details_screen.dart';
+import 'package:audiobook/utilities/enter_route.dart';
 import 'package:flutter/material.dart';
-
-import '../model/book_model.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -10,80 +12,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  List<Book> listOfBooks = [
-    Book(
-        poster: "asset/image/theLastWhish.jpg",
-        bookCover: "asset/image/theLastWhishBookCover.jpg",
-        title: "The Last Wish",
-        authoer: "Andrzej Sapkowski",
-        rate: "4.0",
-        tags: ["Fantasy", "Drama", "Fiction"],
-        summary:
-            "Geralt the Witcher—revered and hated—is a man whose magic powers, enhanced by long training and a mysterious elixir, have made him a brilliant fighter and a merciless assassin. Yet he is no ordinary murderer: his targets are the multifarious monsters and vile fiends that ravage the land and attack the innocent.",
-        audioUrl:
-            "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=1",
-        isRecommended: true,
-        chapters: [
-          Chapters(
-              chapterId: 1,
-              chapterName: "First Chapter",
-              chapterUrl:
-                  "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=1"),
-          Chapters(
-              chapterId: 2,
-              chapterName: "Second Chapter",
-              chapterUrl:
-                  "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=2")
-        ]),
-    Book(
-        poster: "asset/image/SwordOfDestiny.jpg",
-        bookCover: "asset/image/SwordOfDestinyBookCover.jpg",
-        title: "Sword of Destiny",
-        authoer: "Andrzej Sapkowski",
-        rate: "4.0",
-        tags: ["Fantasy", "Drama", "Fiction"],
-        summary:
-            "Geralt is a witcher, a man whose magic powers, enhanced by long training and a mysterious elixir, have made him a brilliant fighter and a merciless assassin. Yet he is no ordinary murderer: his targets are the multifarious monsters and vile fiends that ravage the land and attack the innocent.",
-        audioUrl:
-            "https://ipaudio.club/wp-content/uploads/HQ/TRECIA/Sword%20of%20Destiny/01.mp3?_=1",
-        isRecommended: true,
-        chapters: [
-          Chapters(
-              chapterId: 1,
-              chapterName: "First Chapter",
-              chapterUrl:
-                  "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=1"),
-          Chapters(
-              chapterId: 2,
-              chapterName: "Second Chapter",
-              chapterUrl:
-                  "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=2")
-        ]),
-    Book(
-        poster: "asset/image/bloodOfElves.jpg",
-        bookCover: "asset/image/bloodOfElvesBookCover.jpg",
-        title: "Blood of Elves",
-        authoer: "Andrzej Sapkowski",
-        rate: "4.0",
-        tags: ["Fantasy", "Drama", "Fiction"],
-        summary:
-            "For over a century, humans, dwarves, gnomes, and elves have lived together in relative peace. But times have changed, the uneasy peace is over, and now the races are fighting once again. The only good elf, it seems, is a dead elf.",
-        audioUrl:
-            "https://ipaudio6.com/wp-content/uploads/BOOKAUDIO/Blood%20of%20Elves/1.mp3?_=1",
-        isRecommended: true,
-        chapters: [
-          Chapters(
-              chapterId: 1,
-              chapterName: "First Chapter",
-              chapterUrl:
-                  "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=1"),
-          Chapters(
-              chapterId: 2,
-              chapterName: "Second Chapter",
-              chapterUrl:
-                  "https://free.audiobookslab.com/audio/the-last-wish-complete.mp3?_=2")
-        ]),
-  ];
+  final BookDirectory bookDirectory = BookDirectory();
 
   @override
   Widget build(BuildContext context) {
@@ -392,10 +321,8 @@ class _SearchScreenState extends State<SearchScreen> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  latestSearch(listOfBooks[0].bookCover),
-                  latestSearch(listOfBooks[0].bookCover),
-                  latestSearch(listOfBooks[0].bookCover),
-                  latestSearch(listOfBooks[0].bookCover),
+                  ...List.generate(bookDirectory.listOfBooks.length,
+                      (index) => latestSearch(bookDirectory.listOfBooks[index]))
                 ],
               ),
             ),
@@ -405,48 +332,58 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  Widget latestSearch(String bookCover) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
-      child: Column(
-        children: [
-          SizedBox(
-            width: 160,
-            height: 160,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 160,
-                  height: 160,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(bookCover),
-                      fit: BoxFit.fill,
+  Widget latestSearch(Book item) {
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(
+        EnterRoute(
+            enterPage: BookDetailsScreen(
+          bookDetail: item,
+        )),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
+        child: Column(
+          children: [
+            SizedBox(
+              width: 160,
+              height: 160,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 160,
+                    height: 160,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(item.bookCover),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.015,
-          ),
-          const SizedBox(
-            width: 160,
-            child: Text(
-              'The Black Witch',
-              style: TextStyle(
-                color: Color(0xFFF5F5FA),
-                fontSize: 16,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
+                ],
               ),
             ),
-          )
-        ],
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.015,
+            ),
+            SizedBox(
+              width: 160,
+              child: Text(
+                item.title,
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Color(0xFFF5F5FA),
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

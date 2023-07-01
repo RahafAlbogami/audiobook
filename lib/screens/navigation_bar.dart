@@ -19,6 +19,8 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
     const LibraryScreen()
   ];
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
