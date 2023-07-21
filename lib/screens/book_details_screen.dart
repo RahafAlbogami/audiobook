@@ -101,61 +101,12 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 20,
-                          height: 20,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(),
-                          child: Image.asset("asset/image/star-filled.png"),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.010,
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(),
-                          child: Image.asset("asset/image/star-filled.png"),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.010,
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(),
-                          child: Image.asset("asset/image/star-filled.png"),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.010,
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(),
-                          child: Image.asset("asset/image/star-filled.png"),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.010,
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(),
-                          child: Image.asset("asset/image/star-outlined.png"),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.015,
-                        ),
+                        ...List.generate(5, (index)=> starRating(index < widget.bookDetail.rate)),
                         SizedBox(
                           width: 31,
                           height: 28,
                           child: Text(
-                            widget.bookDetail.rate,
+                            widget.bookDetail.rate.toString(),
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               color: Color(0xFFD5D5E3),
@@ -340,6 +291,18 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget starRating(bool filled) {
+    return Container(
+      width: 20,
+      height: 20,
+      clipBehavior: Clip.antiAlias,
+      decoration: const BoxDecoration(),
+      child: filled
+          ? Image.asset("asset/image/star-filled.png")
+          : Image.asset("asset/image/star-outlined.png"),
     );
   }
 }

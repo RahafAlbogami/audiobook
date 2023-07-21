@@ -70,30 +70,37 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
 
     audioPlayer.onPlayerComplete.listen((event) {
       if (mounted) {
-        setState(() {
-          currentChapter = currentChapter + 1;
-        });
+        if (currentChapter < maxChapters) {
+          setState(() {
+            currentChapter = currentChapter + 1;
+          });
+          changeAudio(currentChapter);
+        }
       }
     });
   }
 
   Future setAudio() async {
     String url = widget.bookDetail.chapters[currentChapter].chapterUrl;
-    audioPlayer.setSourceUrl(url);
 
     if (mounted) {
       setState(() {
         maxChapters = widget.bookDetail.chapters.length - 1;
       });
     }
-
+    await audioPlayer.play(UrlSource(url));
   }
 
   Future changeAudio(int chapterIndex) async {
     String url = widget.bookDetail.chapters[chapterIndex].chapterUrl;
-    audioPlayer.setSourceUrl(url);
+    //audioPlayer.setSourceUrl(url);
 
-    audioPlayer.resume();
+    setState(() {
+      duration = Duration.zero;
+      position = Duration.zero;
+    });
+
+    await audioPlayer.play(UrlSource(url));
   }
 
   Future speedAudio() async {
@@ -320,7 +327,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
               ),
               Slider(
                 min: 0,
-                max: duration.inSeconds.toDouble(),
+                max: (duration.inSeconds.toDouble() + 300),
                 value: position.inSeconds.toDouble(),
                 activeColor: const Color(0xFF4838D1),
                 inactiveColor: const Color(0xFFDDD7FC),
@@ -461,7 +468,9 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: Text(
-                 widget.bookDetail.chapters[currentChapter].chapterName,
+                  widget.bookDetail.chapters[currentChapter].chapterName,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: true,
                   style: const TextStyle(
                     color: Color(0xFF9292A2),
                     fontSize: 14,

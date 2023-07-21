@@ -3,7 +3,7 @@ class Book {
   final String bookCover;
   final String title;
   final String authoer;
-  final String rate;
+  final int rate;
   final List<String> tags;
   final String summary;
   final String audioUrl;
